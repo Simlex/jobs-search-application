@@ -98,36 +98,47 @@ const JobSearch = () => {
                             ) : searchError && (
                                 <Text>Oops something went wrong</Text>
                             )}
+                            {
+                                !searchLoader && searchResult.length == 0 && (
+                                    <Text>No data found for the search keyword - {params.id}</Text>
+                                )
+                            }
                         </View>
                     </>
                 )}
-                ListFooterComponent={() => (
-                    <View style={styles.footerContainer}>
-                        <TouchableOpacity
-                            style={styles.paginationButton}
-                            onPress={() => handlePagination('left')}
-                        >
-                            <Image
-                                source={icons.chevronLeft}
-                                style={styles.paginationImage}
-                                resizeMode="contain"
-                            />
-                        </TouchableOpacity>
-                        <View style={styles.paginationTextBox}>
-                            <Text style={styles.paginationText}>{page}</Text>
-                        </View>
-                        <TouchableOpacity
-                            style={styles.paginationButton}
-                            onPress={() => handlePagination('right')}
-                        >
-                            <Image
-                                source={icons.chevronRight}
-                                style={styles.paginationImage}
-                                resizeMode="contain"
-                            />
-                        </TouchableOpacity>
-                    </View>
-                )}
+                ListFooterComponent={() => {
+                    {
+                        !searchLoader && searchResult.length == 0 ? (
+                            <></>
+                        ) : (
+                            <View style={styles.footerContainer}>
+                                <TouchableOpacity
+                                    style={styles.paginationButton}
+                                    onPress={() => handlePagination('left')}
+                                >
+                                    <Image
+                                        source={icons.chevronLeft}
+                                        style={styles.paginationImage}
+                                        resizeMode="contain"
+                                    />
+                                </TouchableOpacity>
+                                <View style={styles.paginationTextBox}>
+                                    <Text style={styles.paginationText}>{page}</Text>
+                                </View>
+                                <TouchableOpacity
+                                    style={styles.paginationButton}
+                                    onPress={() => handlePagination('right')}
+                                >
+                                    <Image
+                                        source={icons.chevronRight}
+                                        style={styles.paginationImage}
+                                        resizeMode="contain"
+                                    />
+                                </TouchableOpacity>
+                            </View>
+                        )
+                    }
+                }}
             />
         </SafeAreaView>
     )
