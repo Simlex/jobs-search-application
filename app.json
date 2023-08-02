@@ -5,6 +5,17 @@
       "bundler": "metro"
     },
     "name": "jobs-search-application",
-    "slug": "jobs-search-application"
+    "slug": "jobs-search-application",
+    "extra": {
+      "eas": {
+        "projectId": "130f1b61-fe68-47d7-bac2-370cf6f2c06f"
+      }
+    },
+    "android": {
+      "package": "com.simlex.jobssearchapplication"
+    },
+    "ios": {
+      "bundleIdentifier": "com.simlex.jobssearchapplication"
+    }
   }
 }
